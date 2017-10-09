@@ -1,12 +1,24 @@
 package se.academy.java;
 
+import javafx.embed.swing.JFXPanel;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        final JFXPanel fxPanel = new JFXPanel();
 
-        MP3Player m = new MP3Player();
+        //MP3Player m = new MP3Player();
+        MusicPlayer mVictory = new MusicPlayer("victory.mp3");
+        MusicPlayer mBlues = new MusicPlayer("Blues-Loop.mp3", true);
+        MusicPlayer button = new MusicPlayer("button-3.mp3");
+        MusicPlayer.musicPlayers.add(mVictory);
+        MusicPlayer.musicPlayers.add(mBlues);
+        MusicPlayer.musicPlayers.add(button);
+        mVictory.start();
+        mBlues.start();
+        button.start();
 
         Scanner sc = new Scanner(System.in);
         boolean again = true;
@@ -27,25 +39,32 @@ public class Main {
                     break;
 
                 case "1":
-                    m.playTune("victory.mp3");
+                    //m.playTune("victory.mp3");
+                    mVictory.playMusic();
                     break;
                 case "2":
-                    m.playTune("Blues-Loop.mp3", true);
+                    //m.playTune("Blues-Loop.mp3", true);
+                    mBlues.playMusic();
                     break;
                 case "3":
-                    m.stopTune("Blues-Loop.mp3");
+                    //m.stopTune("Blues-Loop.mp3");
+                    mBlues.stopMusic();
                     break;
                 case "4":
-                    m.stopAllTunes();
+                    //m.stopAllTunes();
+                    MusicPlayer.stopAllMusic();
                 case "5":
-                    m.pauseAllTunes();
+                    //m.pauseAllTunes();
+                    MusicPlayer.pauseAllMusic();
                     break;
                 case "6":
-                    m.resumeAllTunes();
+                    //m.resumeAllTunes();
+                    MusicPlayer.resumeAllMusic();
                     break;
 
                 default:
-                    m.playSound("button-3.mp3");
+                    //m.playSound("button-3.mp3");
+                    button.playMusic();
                     break;
             }
         } while (again);
