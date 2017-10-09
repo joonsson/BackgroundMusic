@@ -36,6 +36,7 @@ public class Main {
             switch (command) {
                 case "0":
                     again = false;
+                    System.exit(0);
                     break;
 
                 case "1":
