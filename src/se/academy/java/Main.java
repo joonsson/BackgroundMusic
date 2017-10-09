@@ -6,21 +6,21 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final JFXPanel fxPanel = new JFXPanel();
 
         MusicPlayer mVictory = new MusicPlayer("victory.mp3");
         MusicPlayer mBlues = new MusicPlayer("Blues-Loop.mp3", true);
         MusicPlayer metroid = new MusicPlayer("Brinstar.mp3");
-        MusicPlayer button = new MusicPlayer("button-3.mp3");
+        //MusicPlayer button = new MusicPlayer("button-3.mp3");
         MusicPlayer.musicPlayers.add(mVictory);
         MusicPlayer.musicPlayers.add(mBlues);
         MusicPlayer.musicPlayers.add(metroid);
-        MusicPlayer.musicPlayers.add(button);
+        //MusicPlayer.musicPlayers.add(button);
         mVictory.start();
         mBlues.start();
         metroid.start();
-        button.start();
+        //button.start();
 
         Scanner sc = new Scanner(System.in);
         boolean again = true;
@@ -68,6 +68,11 @@ public class Main {
                     break;
 
                 default:
+                    //button.playMusic();
+                    MusicPlayer button = new MusicPlayer("button-3.mp3");
+                    MusicPlayer.musicPlayers.add(button);
+                    button.start();
+                    Thread.sleep(10);
                     button.playMusic();
                     break;
             }
