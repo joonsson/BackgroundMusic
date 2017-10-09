@@ -38,10 +38,10 @@ public class MusicPlayer extends Thread {
     }
     public void stopMusic() {
         mediaPlayer.pause();
+        mediaPlayer.seek(Duration.ZERO);
     }
     public void pauseMusic() {
         mediaPlayer.pause();
-        mediaPlayer.seek(Duration.ZERO);
     }
     public void resumeMusic() {
         mediaPlayer.play();
