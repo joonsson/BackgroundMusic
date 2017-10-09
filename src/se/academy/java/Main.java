@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         final JFXPanel fxPanel = new JFXPanel();
 
-        //MP3Player m = new MP3Player();
         MusicPlayer mVictory = new MusicPlayer("victory.mp3");
         MusicPlayer mBlues = new MusicPlayer("Blues-Loop.mp3", true);
         MusicPlayer metroid = new MusicPlayer("Brinstar.mp3");
@@ -45,15 +44,12 @@ public class Main {
                     break;
 
                 case "1":
-                    //m.playTune("victory.mp3");
                     mVictory.playMusic();
                     break;
                 case "2":
-                    //m.playTune("Blues-Loop.mp3", true);
                     mBlues.playMusic();
                     break;
                 case "3":
-                    //m.stopTune("Blues-Loop.mp3");
                     mBlues.stopMusic();
                     break;
                 case "4":
@@ -63,19 +59,15 @@ public class Main {
                     metroid.stopMusic();
                     break;
                 case "6":
-                    //m.stopAllTunes();
                     MusicPlayer.stopAllMusic();
                 case "7":
-                    //m.pauseAllTunes();
                     MusicPlayer.pauseAllMusic();
                     break;
                 case "8":
-                    //m.resumeAllTunes();
                     MusicPlayer.resumeAllMusic();
                     break;
 
                 default:
-                    //m.playSound("button-3.mp3");
                     button.playMusic();
                     break;
             }
