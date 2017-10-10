@@ -35,6 +35,11 @@ public class Main {
         System.out.println("8\tResume all tunes (does not work, will start over all looped tunes)");
         System.out.println("Default: Play a sound (try smashing ENTER)");
         do {
+            for (int i = 0; i < MusicPlayer.musicPlayers.size(); i++) {
+                if (MusicPlayer.musicPlayers.get(i).isSelfDestruct()) {
+                    MusicPlayer.musicPlayers.remove(i);
+                }
+            }
             System.out.print("\nCommand >> ");
             String command = sc.nextLine();
             switch (command) {
@@ -69,7 +74,7 @@ public class Main {
 
                 default:
                     //button.playMusic();
-                    MusicPlayer button = new MusicPlayer("button-3.mp3");
+                    MusicPlayer button = new MusicPlayer("button-3.mp3", false, true);
                     MusicPlayer.musicPlayers.add(button);
                     button.start();
                     Thread.sleep(10);

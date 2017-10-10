@@ -14,13 +14,19 @@ public class MusicPlayer extends Thread {
     private String fileName;
     private Media hit;
     private boolean loop;
+    private boolean selfDestructor;
+    private boolean selfDestruct;
 
     public MusicPlayer(String fileName) {
         this(fileName, false);
     }
     public MusicPlayer(String fileName, boolean loop) {
+        this(fileName, loop, false);
+    }
+    public MusicPlayer(String fileName, boolean loop, boolean selfDestruct) {
         this.fileName = fileName;
         this.loop = loop;
+        this.selfDestructor = selfDestruct;
         hit = new Media(new File(fileName).toURI().toString());
 
     }
@@ -31,6 +37,15 @@ public class MusicPlayer extends Thread {
                 mediaPlayer.seek(Duration.ZERO);
             });
         }
+        if (selfDestructor) {
+            mediaPlayer.setOnEndOfMedia(() -> {
+                destroyz();
+            });
+        }
+    }
+    private void destroyz() {
+        mediaPlayer = null;
+        selfDestruct = true;
     }
     public void playMusic() {
         mediaPlayer.seek(Duration.ZERO);
@@ -60,5 +75,21 @@ public class MusicPlayer extends Thread {
         for (MusicPlayer m: musicPlayers) {
             m.resumeMusic();
         }
+    }
+
+    public boolean isSelfDestructor() {
+        return selfDestructor;
+    }
+
+    public void setSelfDestructor(boolean selfDestructor) {
+        this.selfDestructor = selfDestructor;
+    }
+
+    public boolean isSelfDestruct() {
+        return selfDestruct;
+    }
+
+    public void setSelfDestruct(boolean selfDestruct) {
+        this.selfDestruct = selfDestruct;
     }
 }
